@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram User Finder - مُعَرِّف مستخدم تلجيرام</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Find Telegram users easily by entering their user ID. This tool generates direct links for Telegram users.">
+    <meta name="keywords" content="Telegram, User Finder, Telegram User, ID Finder, Telegram Link Generator">
+    <meta name="author" content="Abdullah">
+    
+    <!-- Open Graph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Telegram User Finder">
+    <meta property="og:description" content="Easily find Telegram users by entering their user ID and generating direct links.">
+    <meta property="og:image" content="URL_TO_AN_IMAGE_THUMBNAIL">
+    <meta property="og:url" content="URL_OF_YOUR_WEBSITE">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Tags for Twitter Sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Telegram User Finder">
+    <meta name="twitter:description" content="Easily find Telegram users by entering their user ID and generating direct links.">
+    <meta name="twitter:image" content="URL_TO_AN_IMAGE_THUMBNAIL">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="URL_OF_YOUR_WEBSITE">
+
+    <!-- Styles and Fonts -->
+    <style>
+        body {
+            background-color: #0A1F44;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #122A56;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .form-control {
+            background-color: #1C3A70;
+            color: #ffffff;
+            border: 1px solid #4A5F87;
+        }
+        .btn-primary {
+            background-color: #0066CC;
+            border-color: #0066CC;
+        }
+        .btn-primary:hover {
+            background-color: #005BB5;
+            border-color: #005BB5;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .lang-toggle {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .lang-toggle button {
+            margin: 0 5px;
+            background-color: #0066CC;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .lang-toggle button.active {
+            background-color: #005BB5;
+        }
+        [lang="ar"] {
+            direction: rtl;
+            text-align: right;
+        }
+    </style>
+</head>
+<body lang="en">
+
+<div class="container text-center">
+    <div class="lang-toggle">
+        <button id="enBtn" class="active">English</button>
+        <button id="arBtn">العربية</button>
+    </div>
+    <h2 id="title">Telegram User Finder</h2>
+    <p id="description">Enter the User ID to generate the link</p>
+    <form id="userForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="userId" placeholder="Enter User ID" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" id="searchBtn">Search</button>
+    </form>
+</div>
+
+<div class="footer">
+    <p>Developed by <a href="https://t.me/ABDO_x218" target="_blank">𝑨𝒃𝒅𝒖𝒍𝒍𝒂𝒉</a></p>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<!-- JavaScript -->
+<script>
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var userId = document.getElementById('userId').value.trim();
+        if (userId) {
+            var telegramLink = `tg://openmessage?user_id=${userId}`;
+            window.location.href = telegramLink;
+        }
+    });
+
+    // Language toggle
+    const enBtn = document.getElementById('enBtn');
+    const arBtn = document.getElementById('arBtn');
+    const body = document.body;
+
+    enBtn.addEventListener('click', function() {
+        setLanguage('en');
+    });
+
+    arBtn.addEventListener('click', function() {
+        setLanguage('ar');
+    });
+
+    function setLanguage(lang) {
+        if (lang === 'en') {
+            body.setAttribute('lang', 'en');
+            document.getElementById('title').innerText = 'Telegram User Finder';
+            document.getElementById('description').innerText = 'Enter the User ID to generate the link';
+            document.getElementById('userId').placeholder = 'Enter User ID';
+            document.getElementById('searchBtn').innerText = 'Search';
+            enBtn.classList.add('active');
+            arBtn.classList.remove('active');
+        } else if (lang === 'ar') {
+            body.setAttribute('lang', 'ar');
+            document.getElementById('title').innerText = 'مُعَرِّف مستخدم تلجيرام';
+            document.getElementById('description').innerText = 'أدخل معرف المستخدم لإنشاء الرابط';
+            document.getElementById('userId').placeholder = 'أدخل معرف المستخدم';
+            document.getElementById('searchBtn').innerText = 'بحث';
+            enBtn.classList.remove('active');
+            arBtn.classList.add('active');
+        }
+    }
+</script>
+
+</body>
+  </html>
