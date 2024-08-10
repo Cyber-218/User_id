@@ -32,7 +32,7 @@ To run this project locally:
 
 ## Screenshots
 
-![Screenshot of Telegram User Finder](URL_TO_SCREENSHOT)
+![Screenshot of Telegram User Finder](https://i.postimg.cc/sxkDv267/cyber-218-github-io-480x800phone-9398ee.jpg)
 
 ## Meta Tags for SEO
 
